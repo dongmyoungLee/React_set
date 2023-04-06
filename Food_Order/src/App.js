@@ -1,8 +1,28 @@
+import {useState} from "react";
+import Header from './components/Layout/Header';
+import Meals from "./components/Meals/Meals";
+import Cart from "./components/Cart/Cart";
+import CartProvider from "./store/CartProvider";
+
 function App() {
+  const [modalShown, setModalShown] = useState(false);
+
+  const showModalHandler = () => {
+    setModalShown(true);
+  }
+
+  const hideModalHandler = () => {
+    setModalShown(false);
+  }
+
   return (
-    <div>
-      <h2>Let's get started!</h2>
-    </div>
+    <CartProvider>
+      {modalShown && <Cart onModalHide={hideModalHandler} />}
+      <Header onModalShow={showModalHandler} />
+      <main>
+        <Meals />
+      </main>
+    </CartProvider>
   );
 }
 
