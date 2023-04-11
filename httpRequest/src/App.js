@@ -9,10 +9,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchMoivesHandler();
-  }, [])
-
   const fetchMoivesHandler = useCallback(async () => {
     setIsLoading(true);
     setError(null);
@@ -43,6 +39,10 @@ function App() {
     }
 
     setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchMoivesHandler();
   }, []);
 
   let content = <p>Found no moives</p>;
