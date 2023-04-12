@@ -15,13 +15,9 @@ function App() {
     setModalShown(false);
   }
 
-  const testd = () => {
-    alert("ㅋ");
-  }
-
   return (
     <CartProvider>
-      {modalShown && <Cart onModalHide={hideModalHandler} test={testd} />}
+      {modalShown && <Cart onModalHide={hideModalHandler} />}
       <Header onModalShow={showModalHandler} />
       <main>
         <Meals />
